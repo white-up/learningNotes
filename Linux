@@ -1,0 +1,102 @@
+## Linux目录结构
+	/(根目录)
+		*/root
+			系统管理员主目录
+		*/bin(及子目录下的/usr/bin /usr/local/bin)
+			存放经常使用的命令
+    */sbin(及子目录下的/usr/sbin /usr/local/sbin)
+      存放系统管理员使用的系统管理程序
+    */boot
+      存放启动Linux的核心文件如连接文件以及镜像文件
+    */dev
+      把硬件以文件的形式存储,类似windows的资源管理器
+    */usr
+      存放用户的应用程序和文件,类似Windows的program files文件
+          */usr/bin
+          */usr/sbin
+          */usr/local
+            给另一个主机额外安装软件的目录,一般通过编译源码方式安装
+          */usr/local/bin
+          */usr/local/sbin
+          …
+    */etc
+      所有的系统管理需要的配置文件和子目录
+          */etc/passwd 包含用户的配置文件[每行意义 username:password:userID:groupID:解释性描述:主目录:登录shell]
+          */etc/shadow 口令的配置文件[每行的意义 username:加密password:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志]
+          */etc/group 记录Linux包含的组的信息[每行含义 组名:组标识号:组内用户列表]
+    */home
+      存放普通用户的主目录
+    */var
+    主要针对常态性变动文件，包括缓存（cache）、登录文件（logfile）以及某些软件运行所产生的文件，包括程序文件（lock file，run file），或者例如Mysql数据库的文件等。
+    */lib
+    系统开机需要的最基本的动态连接共享库,类似Windows里面的DLL文件
+    */media
+      Linux系统识别的外置设备如U盘光驱等存储目录
+    */lost+found
+      一般为空,当非法关机后会存放一些文件
+    */proc
+      是一个虚拟目录,是系统内存的映射
+    */srv
+      存放一些服务启动之后需要提取的数据
+    */sys
+      存放了2.6内核中出现的一个文件系统sysfs
+    */tmp
+      存放临时文件
+    */mnt
+      外部系统的共享文件存放处
+    */opt
+      给主机额外安装软件的存放目录
+    */selinux
+      是一个安全子系统,可以控制程序访问指定的文件.他有三种工作模式可以设置
+## vi/vim常用快捷键
+    *拷贝当前n行 nyy    
+    *黏贴 p
+    *删除当前n行 ndd
+    *查找单词 [命令行下]/关键字 回车查找
+    *设置文件显示行号 [命令行下]:set nu 
+    *关闭显示行号 set nonu
+    *定位到文件尾 [一般模式下] [G]
+    *定位到首行 [一般模式下] [gg]
+  #模式切换#vim xxx进入一般模式
+      #进入插入模式 i,I,O,o,A,a,R,r均可
+          #esc退至一般模式
+      #进入命令模式 输入:或/
+          #esc退至一般模式
+#Linux实操常用指令
+    *关机&重启
+      #shutdown -h now 立刻关机
+      #shutdown -h n   n分钟后关机
+      #shutdown -r now 立刻重启
+      #halt            关机
+      #reboot          重启
+      #sync            数据同步到磁盘[关机/重启前会自动执行的命令]
+    *登录&注销
+      #su- username 切换到登录
+      #logout 注销用户[在图形运行级别无效,在运行级别3有效]
+    *用户管理
+      #useradd  username 添加用户名为username的用户
+        %useradd -d 指定目录 username 给创建的新用户指定家目录[默认在home/${username}]
+      #passwd username 指定/修改密码
+      #userdel username 删除用户但保留其家目录
+        %userdel -r username 不保留家目录删除
+      #id username 查询用户id[用户不存在则返回无此用户]
+      #who am I/whoami 查看当前用户信息 
+      #groupadd groupname 新增组
+      #groupdel groupname 删除组
+          useradd =g groupname username 新增用户于指定组中
+    *常用指令
+      #pwd 显示当前用户所在目录
+      #指定运行级别
+         %运行级别说明
+              ^0 关机
+              ^1 单用户[找回丢失密码]
+              ^2 多用户无网络服务
+              ^3 `多用户有网络服务
+              ^4 系统未使用保留给用户
+              ^5 图形界面
+              ^6 系统重启
+         %init [n] 指定运行级别为n
+         %
+      ##
+    **
+      
