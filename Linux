@@ -103,7 +103,36 @@
 		#To view current default target,run:
 		systement get-default TARGET.target
       #单用户模式找回密码
-      	1)
+      	1)开机界面按"e"进入编辑界面
+	2)找到Linux16开头段尾部输入 init=/bin/sh
+	3)输入快捷键Ctrl+x进入单用户模式
+	4)在光标闪烁的位置输入 mount -o remount,rw/后按回车
+	5)新一行输入passwd回车 后输入密码后回车
+      #帮助指令
+      	 *man [命令或配置文件] 获得帮助信息
+	 *help 命令 获得shell内置帮助信息
+      #文件目录类
+      	  *ls [选项][目录/文件]
+	       常用选项
+	       	  % -a 显示当前目录所有文件和目录[包括隐藏目录]
+		  % -l 以列表方式显示信息
+	  *cd [参数] 切换到指定目录
+	  *mkdir [选项] [要创建的目录] 用于创建目录
+	       常用选项
+	          % -p 创建多级目录
+	  *rmdir [选项] [要删除的空目录] 删除指定空目录
+	  *touch 文件名称 创建空文件
+	  *cp [选项] source dest 拷贝文件
+	        常用选项
+		  % -r 递归复制整个文件夹
+	  *rm [选项] 要删除的目录 删除指定目录/文件
+	        常用选项
+		  % -r 递归删除整个文件/目录
+		  % -f 强制删除不提示
+	  *mv oldNameFile newNameFile 移动/重命名文件
+	  *cat [选项] 要查看的文件 查看文件内容
+	         常用选项
+		  % -n 显示行号 
       #
     **
       
