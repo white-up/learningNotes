@@ -24,6 +24,7 @@
           */etc/passwd 包含用户的配置文件[每行意义 username:password:userID:groupID:解释性描述:主目录:登录shell]
           */etc/shadow 口令的配置文件[每行的意义 username:加密password:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志]
           */etc/group 记录Linux包含的组的信息[每行含义 组名:组标识号:组内用户列表]
+	  */etc/inittab 在centos7之前出现.存储运行级别 7以后简化为命令
     */home
       存放普通用户的主目录
     */var
@@ -96,7 +97,13 @@
               ^5 图形界面
               ^6 系统重启
          %init [n] 指定运行级别为n
-         %
-      ##
+         %简化后的运行级别修改指令
+	 	multi-user.target:analogous to runlevel 3
+		graphical.target:analogous to runlevel 5
+		#To view current default target,run:
+		systement get-default TARGET.target
+      #单用户模式找回密码
+      	1)
+      #
     **
       
