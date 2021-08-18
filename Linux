@@ -393,6 +393,25 @@
 		4 系统未使用保留
 		5 x11控制台,登录后进入图形GUI模式
 		6 系统正常关闭并重启,同样系统默认级别不能设为6
-      ##
+      	 开机流程
+      	        开机->BIOS->/boot->systemd进程1->运行级别->运行级别对应的服务
+	 CentOS7运行级别
+	 	在/etc/initab进行了简化:
+			 multi-user.target: analogous to runlevel 3 
+			 graphical.target: analogous to runlevel S 
+			 init ()
+			 #To view current default target, run:
+			 systemetl get-default
+			 #To set a default target, run: 
+			 systemctl set-default TARGET.target
+	 	chkconfig给各服务的运行级别设置自动/关闭,其指令管理在/etc/init.d中查看
+	 	 	chkconfig --list[|grep xxx] 查看服务
+		 	chkconfig 服务名 --list 
+		 	chkconfig --level n  服务名 on/off 设置服务运行级别为ns设置自启动开关
+	 	systemctl管理指令,指令管理在/usr/lib/systemd/system查看
+			systemctl [start|stop|restart|status] 服务名
+		systemctl设置服务自启状态
+			systemctl list-unit-files [|grep服务名](查看服务开机启动状态,grep用于过滤)
+      #
     **
       
