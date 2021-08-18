@@ -300,6 +300,20 @@
 		6)设置可以自动挂载
 		      永久挂载:通过修改/etc/fstab实现挂载,添加完成后执行mount -a即刻生效
 	     df -h 查询硬盘情况
+	     du [选项] 查询指定目录磁盘占用状况
+	         选项
+		      -s 指定目录占用大小汇总
+		      -h 带计量单位
+		      -a 含文件
+		      --max-depth=n 子目录深度为n
+		      -c 列出明细同时增加汇总值
+	     常用指令
+	              ls-l/opt|grep"^-"|wc-l 统计/opt文件夹下文件的个数
+		      ls-l/opt|grep"^d"|wc-l 统计/opt文件夹下目录的个数
+		      ls-lR/opt|grep"^-"|wc-l 统计/opt文件夹下文件个数包括子文件夹内
+		      ls-lR/opt|grep"^d"|wc-l 统计/opt文件夹内目录个数,包括子文件夹内
+		      tree 目录 以树状显示目录结构(若没有tree用yum install tree安装)
+		      
       ##
     **
       
