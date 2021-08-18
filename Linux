@@ -314,6 +314,38 @@
 		      ls-lR/opt|grep"^d"|wc-l 统计/opt文件夹内目录个数,包括子文件夹内
 		      tree 目录 以树状显示目录结构(若没有tree用yum install tree安装)
 		      
-      ##
+      #网络配置
+             *查看网络IP和网关
+	              ipconfig 查看Windows网络配置
+		      ifconfig 查看Linux的网络配置
+	     *ping 目的主机 测试当前服务器是否可以连接到目的主机
+	     *Linux的网络环境配置
+	            1)自动获取:方便使用但每次登录有可能更换IP无法应用于服务器
+		    2)指定IP:
+		          1.编辑vi/etc/sysconfig/network-scripts/ifcfg-ens33
+			  2.内容说明
+			          %DEVICE=? 接口名(设备,网卡)
+				  %HWADDR=? MAC地址
+				  %TYPE=Ethernet 网络类型(通常是Ethernet)
+				  %UUID=? 随机id
+				  %ONBOOT=yes 系统启动时网络接口是否有效(yes/no)
+				  %BOOTPROTO=? IP的配置方法[none|static|bootp|dhcp](引导时不适用协议|静态分配IP|BOOTP协议|DHCP协议)
+	                  3.修改内容
+			  	 BOOTPROTO=static
+				 IPADDR=指定IP地址
+				 GATEWAY=指定网关
+				 DNS1=指定域名解析器
+		          4.service network restart,reboot 重启网络服务或系统
+	  	    3)设置主机名
+		          homename 查看主机名
+			  修改主机名
+			       1)修改文件/etc/hostname内容
+			       2)reboot 重启系统
+	            4)设置hosts映射
+		          Windows 在C:\Windows\System32\drivers\etc\hosts指定
+			  Linux 在/etc/hosts 指定
+	     *主机名解析过程
+	     *****
+      ####
     **
       
