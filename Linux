@@ -412,6 +412,32 @@
 			systemctl [start|stop|restart|status] 服务名
 		systemctl设置服务自启状态
 			systemctl list-unit-files [|grep服务名](查看服务开机启动状态,grep用于过滤)
+			systemct enable服务名(设置服务开机启动)
+			systemectl disable服务名(关闭服务开机启动)
+			systemctl is-enabled服务名(查询某个服务是否是自启动的)
+		关闭防火墙和重启防火墙
+		 	firewalld.service
+			systemctl status firewalld
+			systemctl stop firewalld
+			systemctl start firewalld 
+			    如果希望设置某个服务自启动或永久关闭生效,使用systemctl [enable|disable] 服务名
+		打开/关闭指定端口
+			firewall-cmd-permanent-add-port=端口号/协议 打开端口
+			firewall-cmd--permanent-remove-port=端口号/协议 关闭端口
+			firewall-cmd--reload 重新载入才能生效
+			firewall-cmd--query-port=端口/协议 查询端口是否开放
+		动态监控进程
+			top [选项] top功能和ps相似,但top在执行一段时间可以更新正在运行的进行
+			 选项
+			   -d 秒数 指定top命令每隔几秒更新,默认3秒
+			   -i 使top不显示任何闲置或僵死进程
+			   -p 通过指定监控进程ID来仅仅监控某个进程的状态
+			 交互操作说明
+			    P 以CPU使用率排序(默认选项)
+			    M 以内存的使用率排序
+			    N 以PID排序
+			    q 退出top
+			    
       #
     **
       
